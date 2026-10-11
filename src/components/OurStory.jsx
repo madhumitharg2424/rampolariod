@@ -56,7 +56,7 @@ export default function OurStory() {
           <div className="story-visuals">
             <div className="story-polaroid-main">
               <PolaroidCard
-                image="/assets/founder-stall.jpg"
+                image="assets\polaroid-collection.jpg"
                 alt="Loyola College Stall with Ramya & Adellinde"
                 caption="Where it all began — Loyola College Stall ♡"
                 subcaption="Chennai, Tamil Nadu"
@@ -69,7 +69,7 @@ export default function OurStory() {
 
             <div className="story-polaroid-secondary">
               <PolaroidCard
-                image="/assets/polaroid-collection.jpg"
+                image="/assets/founder-stall.jpg"
                 alt="Kollywood Polaroid prints"
                 caption="Frames printed with love ✨"
                 rotation={2.5}
