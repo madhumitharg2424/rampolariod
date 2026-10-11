@@ -117,7 +117,7 @@ export default function Hero() {
           {/* Collage Item 1: Real Stall Photo */}
           <div className="collage-polaroid polaroid-stall float-slow">
             <PolaroidCard
-              image="public\assets\format-mini.jpg"
+              image="assets\format-mini.jpg"
               alt="Loyola College Stall"
               caption="Loyola stall memories ♡"
               subcaption="Loyola College, Chennai"
