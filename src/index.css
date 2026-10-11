@@ -1,0 +1,485 @@
+/* ==========================================================================
+   IDHU ENNA PADAM? — RETRO KOLLYWOOD SCRAPBOOK STYLESHEET
+   Brand Palette:
+   - Butter Yellow: #F4E3B2
+   - Warm Cream:    #FFF9EC
+   - Chocolate:     #68432D
+   - Deep Coffee:   #38251B
+   - Vintage Mustard: #D99A43
+   - Soft Peach:    #F1D1B8
+   ========================================================================== */
+
+:root {
+  --color-butter-yellow: #F4E3B2;
+  --color-warm-cream: #FFF9EC;
+  --color-chocolate-brown: #68432D;
+  --color-deep-coffee: #38251B;
+  --color-vintage-mustard: #D99A43;
+  --color-soft-peach: #F1D1B8;
+
+  --color-bg-main: #FFF9EC;
+  --color-bg-card: #FFFCF5;
+  --color-border-subtle: rgba(104, 67, 45, 0.2);
+  --color-border-medium: rgba(104, 67, 45, 0.35);
+  --color-border-solid: #68432D;
+
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-handwriting: 'Kalam', cursive;
+
+  --shadow-sm: 0 2px 6px rgba(56, 37, 27, 0.06);
+  --shadow-md: 0 8px 20px -4px rgba(56, 37, 27, 0.12), 0 2px 6px rgba(56, 37, 27, 0.06);
+  --shadow-polaroid: 0 14px 30px -6px rgba(56, 37, 27, 0.16), 0 4px 10px rgba(56, 37, 27, 0.08);
+  --shadow-hover: 0 22px 40px -8px rgba(56, 37, 27, 0.24), 0 8px 16px rgba(56, 37, 27, 0.12);
+
+  --radius-paper: 4px;
+  --radius-card: 8px;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-warm-cream);
+  color: var(--color-deep-coffee);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-warm-cream);
+  background-image: radial-gradient(rgba(104, 67, 45, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--color-deep-coffee);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle Film Grain Noise Texture */
+.film-grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Typography Helpers */
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--color-deep-coffee);
+  line-height: 1.2;
+}
+
+.font-handwritten {
+  font-family: var(--font-handwriting);
+}
+
+.text-mustard {
+  color: var(--color-vintage-mustard);
+}
+
+.text-brown {
+  color: var(--color-chocolate-brown);
+}
+
+.text-muted {
+  color: #7A5741;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* Section Spacing */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+/* Washi Tape / Paper Tape Effect */
+.tape {
+  position: absolute;
+  height: 24px;
+  background: rgba(244, 227, 178, 0.88);
+  box-shadow: 0 1px 3px rgba(56, 37, 27, 0.15);
+  backdrop-filter: blur(1px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.tape::before,
+.tape::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: inherit;
+}
+
+.tape::before {
+  left: -3px;
+  clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  background: rgba(217, 154, 67, 0.2);
+}
+
+.tape::after {
+  right: -3px;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  background: rgba(217, 154, 67, 0.2);
+}
+
+.tape-top-center {
+  top: -12px;
+  left: 50%;
+  width: 80px;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.tape-top-left {
+  top: -10px;
+  left: -15px;
+  width: 65px;
+  transform: rotate(-25deg);
+}
+
+.tape-top-right {
+  top: -10px;
+  right: -15px;
+  width: 65px;
+  transform: rotate(25deg);
+}
+
+.tape-peach {
+  background: rgba(241, 209, 184, 0.9);
+}
+
+.tape-mustard {
+  background: rgba(217, 154, 67, 0.85);
+}
+
+.tape-cream {
+  background: rgba(255, 249, 236, 0.92);
+  border: 1px dashed rgba(104, 67, 45, 0.3);
+}
+
+/* Film Strip Divider */
+.film-strip-divider {
+  width: 100%;
+  height: 38px;
+  background-color: var(--color-deep-coffee);
+  border-top: 1px solid var(--color-chocolate-brown);
+  border-bottom: 1px solid var(--color-chocolate-brown);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.film-sprockets {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+  gap: 16px;
+}
+
+.sprocket-hole {
+  width: 12px;
+  height: 18px;
+  background-color: var(--color-warm-cream);
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.film-label {
+  font-family: monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--color-butter-yellow);
+  white-space: nowrap;
+  padding: 0 16px;
+  font-weight: bold;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: 1.5px solid transparent;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background-color: var(--color-chocolate-brown);
+  color: var(--color-warm-cream);
+  border-color: var(--color-deep-coffee);
+  box-shadow: 0 4px 12px rgba(104, 67, 45, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-deep-coffee);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(104, 67, 45, 0.35);
+  color: #FFF;
+}
+
+.btn-secondary {
+  background-color: var(--color-butter-yellow);
+  color: var(--color-deep-coffee);
+  border-color: var(--color-chocolate-brown);
+  box-shadow: 0 3px 8px rgba(104, 67, 45, 0.12);
+}
+
+.btn-secondary:hover {
+  background-color: #ECD89F;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(104, 67, 45, 0.2);
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: #FFFFFF;
+  border-color: #1DA851;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.28);
+}
+
+.btn-whatsapp:hover {
+  background-color: #1EBE5D;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+  color: #FFFFFF;
+}
+
+.btn-whatsapp-outline {
+  background-color: transparent;
+  color: var(--color-deep-coffee);
+  border-color: var(--color-chocolate-brown);
+}
+
+.btn-whatsapp-outline:hover {
+  background-color: rgba(104, 67, 45, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Scrapbook Paper Card Container */
+.paper-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-paper);
+  box-shadow: var(--shadow-polaroid);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.paper-card:hover {
+  transform: translateY(-4px) rotate(0.5deg);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Polaroid Card Component */
+.polaroid-frame {
+  background-color: #FFFCF7;
+  border: 1px solid rgba(104, 67, 45, 0.25);
+  padding: 12px 12px 36px 12px;
+  box-shadow: var(--shadow-polaroid);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  user-select: none;
+}
+
+.polaroid-frame:hover {
+  box-shadow: var(--shadow-hover);
+  z-index: 10;
+}
+
+.polaroid-photo-area {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #EFE4D3;
+  overflow: hidden;
+  border: 1px solid rgba(104, 67, 45, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid-photo-area.aspect-portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.polaroid-photo-area.aspect-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.polaroid-photo-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.polaroid-frame:hover .polaroid-photo-area img {
+  transform: scale(1.03);
+}
+
+.polaroid-caption {
+  font-family: var(--font-handwriting);
+  font-size: 1.15rem;
+  color: var(--color-deep-coffee);
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.3;
+}
+
+.polaroid-subcaption {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-chocolate-brown);
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Beautiful Blank Vintage Placeholder inside Polaroid */
+.polaroid-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: linear-gradient(145deg, #F9EFE0 0%, #EFE1CF 100%);
+  color: var(--color-chocolate-brown);
+  text-align: center;
+  position: relative;
+  border: 1px dashed rgba(104, 67, 45, 0.3);
+}
+
+.polaroid-placeholder-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+
+.polaroid-placeholder-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: var(--color-deep-coffee);
+  margin-bottom: 0.25rem;
+}
+
+.polaroid-placeholder-note {
+  font-family: var(--font-handwriting);
+  font-size: 0.95rem;
+  color: var(--color-vintage-mustard);
+}
+
+/* Marquee / Ticker */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: var(--color-butter-yellow);
+  border-top: 1.5px solid var(--color-chocolate-brown);
+  border-bottom: 1.5px solid var(--color-chocolate-brown);
+  padding: 0.85rem 0;
+  display: flex;
+  user-select: none;
+}
+
+.marquee-content {
+  display: inline-flex;
+  gap: 2rem;
+  animation: marqueeScroll 28s linear infinite;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--color-deep-coffee);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Floating animation */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-8px) rotate(var(--rot, 0deg)); }
+}
+
+.float-slow {
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+
+.float-slow-alt {
+  animation: gentleFloat 6s ease-in-out infinite 1.5s;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-content {
+    animation: none !important;
+  }
+}
