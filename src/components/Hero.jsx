@@ -179,7 +179,7 @@ export default function Hero() {
           {/* Collage Item 3: Real Polaroid Collection Table Preview */}
           <div className="collage-polaroid polaroid-mini">
             <PolaroidCard
-              image="public\assets\scene-rajini-headphones.jpg"
+              image="assets\scene-rajini-headphones.jpg"
               alt="Kollywood Polaroid Table"
               caption="Cinema on paper ✨"
               rotation={-1.5}
